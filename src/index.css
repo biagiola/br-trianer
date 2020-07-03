@@ -1,13 +1,524 @@
+* {
+  font-family: 'Luckiest Guy', cursive;
+  overflow-y:hidden;  /* hide the vertical scrollbar */
+  overflow-x:hidden;  /* hide the horizontal scrollbar */
+}
+html {
+  overflow-y:hidden;  /* hide the vertical scrollbar */
+}
 body {
+  background-color: #161616;
+  color: #f1f1f1;
+  font-weight: 300;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  justify-content: center;
+  text-align: center;
+} 
+h1 {
+  background-color: salmon;
+  color: #000;
+  font-size: 25px;
+  font-weight: 20;
+  font-style: 26px;
+  margin: 0px 0px 15px;
+  padding: 15px;
+  cursor:default;
+  display: block;
+}
+h4, h2 {
+  font-weight: 50;
+  margin: 0;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
+#burger {
+  position: absolute;
+  display: inline-flex;
+  font-size:25px;
+  color: salmon;
+  transition: 0.9s all;
+}
+#burger > * {
+  cursor: pointer;
+  transition: 0.9s all;
+}
+.burgerLeft {
+  left:0px;
+}
+.burgerRight {
+  right:0px;
+}
+.burgerLeft, .burgerRight {
+  position: fixed;
+}
+.burgerLeft:hover, .burgerRight:hover {
+  color: grey;
+}
+#backSign {
+  /*display: inline-block;*/
+  justify-self: center;
+  grid-column: 3 / 2;
+  padding: 5px;
+  color: salmon;
+  transition: 0.9s;
+}
+#backSign:hover {
+  color: grey;
+  transition: 0.9s;
+} 
+.container {
+  display: grid;
+  margin-top: 8.5rem !important;
+  max-width: 30rem;
+  max-height: 35rem;
+  margin: 1rem auto;
+  padding: 0px 0px 25px;
+  background-color: #333;
+  border: 1px solid black;
+  transition: 0.5s all;
+  /*box-shadow: 0px 0px 15px  #7e7e7e93;*/
+}
+.boxesContent {
+  margin: 15px 0px;
+  height: 95rem;
+  max-height: 7rem;
+}
+.btnLight {
+  background-color: #161616;
+  color: white;
+  padding: 15px;
+  width: 7.5rem;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s all;
+  justify-self: center;
+}
+.btnLight:hover {
+  color: salmon;
+}
+.btnDark {
+  background-color:black;
+  color: white;
+  padding: 15px;
+  width: 7.5rem;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s all;
+  justify-self: center;
+}
+.btnDark:hover {
+  background-color: salmon;
+  color: black;
+}
+#buttom {
+  width: 6rem;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+/* Switch darmode slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+  width: 40px;
+  height: 24px;
+}
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute !important;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #333;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+.slider:before {
+  position: absolute!important;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 5px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #333;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #333;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* CSS transitions group stuff */
+.wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  /*transition: .4s all !important;*/
+}  
+/* Left Navbar */
+.leftSidenav {
+  border: 0.1px solid black;
+  height: 100%;
+  width: 0;
+  position: fixed !important;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.3s;
+  
 }
+.leftSidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+.leftSidenav a:hover {
+  color: #f1f1f1;
+}
+.leftSidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 32px;
+  margin-left: 40px;
+  padding-bottom: 0;
+  cursor: pointer;
+}
+.closebtn {
+  transition: 0.3s all;
+}
+.closebtn:hover { 
+  color: #000;
+  transition: 0.3s all;
+}
+.leftSidenav .divsideItems {
+  display: grid;
+  margin: 1rem;
+  padding: 0.2rem;
+}
+.leftSidenav span { 
+  display: block;
+  padding-bottom: 0.5rem;
+}
+a, h2 { /* Preventing Line Breaks */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#otherOpstions {
+  display: none;
+}
+@media screen and (max-height: 450px) {
+  .leftSidenav {padding-top: 15px;}
+  .leftSidenav a {font-size: 18px;}
+}
+
+/* Right Navbar */
+.rightSidenav {
+  height: 100%;
+  width: 0;
+  border: 0.1px solid black;
+  position: fixed !important;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.3s;
+}
+.rightSidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+.rightSidenav a:hover {
+  color: #f1f1f1;
+}
+.rightSidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 175px;
+  font-size: 36px;
+  margin-right: 50px;
+  cursor: pointer;
+}
+@media screen and (max-height: 450px) {
+  .rightSidenav {padding-top: 15px;}
+  .rightSidenav a {font-size: 18px;}
+}
+
+/* Modal Stadistics*/
+/* The Modal (background) */
+.modalTraining {
+  position: absolute;
+  top: 30px;
+  left: -50px;
+  animation-name: drive;
+  animation-duration: 5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-duration: 5s;
+  animation-timing-function: ease-out;
+}
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  color: #161616;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Mah Program */
+/*Remove Arrows/Spinners*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.val {
+  display: grid;
+  justify-self: center;
+  padding: 5px;
+  margin: 5px 15px 0px;
+  transition: 0.2s;
+}
+.val.pre-animation {
+  opacity:0;
+  max-height: 1px;
+  transition: 0.2s;
+}
+#num1, #num2 {
+  font-size: 1.5rem;
+  transition: 1s;
+  justify-self: center;
+}
+#num1 {
+  grid-column-start: 2;
+}
+#sign {
+  font-size: 1.5rem;
+  justify-items: start;
+  align-self: center;
+  justify-self: end;
+  transition: all 1s;
+  max-height: 300px;  
+  cursor: default;
+}
+#level, #digits {
+  padding: 15px 15px;
+}
+.box {
+  margin: 0px 1.2rem;
+  transition: 0.3s;
+}
+.box-right {
+  background-color:green; 
+  padding: 15px;
+  transition: 0.3s;
+  
+}
+.box-wrong {
+  background-color:red; 
+  padding: 15px;
+  transition: 0.2s;
+}
+#submit {
+  border: none;
+  padding-top: 15px;
+  background-color: beige;
+  color: #161616;
+  padding: 5px 15px;
+  margin: 15px 5px;;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#submit:hover {    
+  background-color: #161616;
+  color: beige;
+  transition: 0.2s;
+}
+.inputMath {
+  background-color: salmon;
+  display: inline-block;
+  text-align: center;
+  color: #111;
+  margin: 0px 0px 13px;
+  padding: 10px 15px;
+  width: 7rem;
+  border: none;
+  cursor: pointer;
+  justify-self: center;
+}
+.inputMath:hover {
+  box-shadow: rgba(114, 4, 4, 1);
+}
+
+/* Memory Program */
+.digit, input {
+  border: none;
+  display: inline-block;
+  background-color: salmon;
+  color: #111;
+  padding: 20px 5px;
+  margin: 5px;
+  width: 3rem;
+  height: 1.5rem;
+  max-height: 2rem;
+  box-sizing: content-box;
+  transition: 0.2s;
+  vertical-align: center; 
+}
+input {
+  text-align: center;
+  font-size: inherit;
+  transition: 0.2s;
+}
+.wrapperNumbers {
+  box-sizing: border-box;
+  height: 5rem;
+}
+.first {
+  transition: 0.5s;
+}
+.second {
+  transition: 0.5s;
+}
+.buttonContent {
+  margin-top: 5px;
+}
+
+/* The Modal (background) */
+.modal2 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+/* Modal Content */
+.modal2-content {
+  position: fixed;
+  bottom: 0;
+  background-color: #161616;
+  width: 100%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+/* The Close Button */
+.close2 {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  transition: 0.2s all;
+}
+.close2:hover,
+.close2:focus {
+  color: #161616;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal2-header {
+  padding: 2px 16px;
+  background-color: salmon;
+  color: #161616;
+}
+.modal2-body { 
+  padding: 2px 16px; 
+  margin: 15px !important;
+}
+.modal2-footer {
+  padding: 2px 16px;
+  background-color: salmon;
+  color: #1b1b1d;
+}
+/* Add Animation */
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+@keyframes slideOut {
+  from {bottom: 0; opacity: 1}
+  to {bottom: -300px; opacity: 0}
+}
+@keyframes fadeOut {
+  from {opacity: 1} 
+  to {opacity: 0}
+}
+
+@keyframes salir {
+  from { transform: translateX(-200px) } 
+  to { transform: translateY(1500px) }
+}
+
