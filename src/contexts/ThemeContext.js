@@ -5,8 +5,8 @@ class ThemeContextProvider extends Component {
     state = {
         isLightTheme: false,
         light: { 
-            bg: 'salmon', 
-            burgersFonts: 'salmon', 
+            bg: '#fa8072', 
+            burgersFonts: '#fa8072', 
             headers: '#262626', 
             fonts: 'white',
             signAndNums: '#262626',
@@ -16,7 +16,7 @@ class ThemeContextProvider extends Component {
         dark: { 
             bg: '#161616', 
             burgersFonts: '#333', 
-            headers: 'salmon', 
+            headers: '#fa8072', 
             fonts: '#161616', 
             container: '#333', 
             shadow: '0px 0px 15px  #7e7e7e93' 
