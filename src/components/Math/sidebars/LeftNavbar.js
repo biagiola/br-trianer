@@ -8,23 +8,64 @@ class LeftNavbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modalTrainingStatus: false
+            modal: false,
+            title: ''
         }
         this.testing = this.testing.bind(this);
+        this.openStadisticsModal = this.openStadisticsModal.bind(this);
+        this.openTrainingModal = this.openTrainingModal.bind(this);
+        this.openReadMoreModal = this.openReadMoreModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+        this.training = React.createRef();
+        this.stadistics = React.createRef();
+        this.readMore = React.createRef();
     }
 
-    openModal = () => {
-        this.setState({
-            modalTrainingStatus: !this.state.modalTrainingStatus
-        })
+    // open modals
+    openStadisticsModal = () => {
+        //console.log(this.refs.stadistics.id);
+        this.stadistics = true;
+        console.log(this)
+        if(this.stadistics === true ) {
+            console.log('stadistics secction');
+            console.log(this.ref)
+            this.setState({
+                modal: !this.state.modal,
+                title: 'Stadistics'
+            })
+        }        
+    }
+    openTrainingModal = () => {
+        this.training = true;
+        console.log(this)
+        if(this.training === true ) {
+            console.log('training secction');
+            console.log(this.ref)
+            this.setState({
+                modal: !this.state.modal,
+                title: 'Training'
+            })
+        }        
+    }
+    openReadMoreModal = () => {
+        this.training = true;
+        if(this.training === true) {
+            console.log('readmore secction');
+            console.log(this.ref)
+            this.setState({
+                modal: !this.state.modal,
+                title: 'Read More'
+            })
+        }        
     }
 
+    // close moddals
     closeModal = () => {
         this.setState({
-            modalTrainingStatus: !this.state.modalTrainingStatus
+            modal: !this.state.modal
         })
     }
-
+    
     testing = () => {
         console.log('probando');
         this.props.trainingModeBegins();
@@ -45,11 +86,11 @@ class LeftNavbar extends Component {
         const theme = isLightTheme ? light : dark;
 
         let modalTraining;
-        if (this.state.modalTrainingStatus) {
+        if (this.state.modal) {
             modalTraining = <div className="modal" style={{transition: "0.5s"}} >
-                                <div className="modal-content" style={{transition: "0.5s"}}>
+                                <div className="modal-content">
                                     <span onClick={ this.closeModal } className="close">&times;</span>
-                                    <h1>Training Mode</h1>
+                                    <h1>{ this.state.title }</h1>
                                     <h3>User: </h3>
                                     <button className='btnDark' onClick={ this.testing }>Begin</button>
                                 </div>
@@ -60,15 +101,12 @@ class LeftNavbar extends Component {
 
         return (
             <div id="myLeftSidenav" className="leftSidenav" style={{visibility: "visible", position: "absolute", height: "100%", width: scope, backgroundColor: theme.container }}>
-                
                 <h4 className="closebtn" onClick={ this.props.close }>&times;</h4>
                 <h1 style={{ color: theme.fonts, background: theme.headers }}>Account</h1>
-
-                    <h2 style={{ color: theme.signAndNums }}>Stadistics</h2>
-                    <h2 onClick={ this.openModal } style={{ color: theme.signAndNums }}>Training</h2>
-                    <h2 style={{ color: theme.signAndNums }}>Read More</h2>
-                    { modalTraining }
-                    
+                <h2 onClick={ this.openStadisticsModal } ref={ this.stadistics } style={{ color: theme.signAndNums }}>Stadistics</h2>
+                <h2 onClick={ this.openTrainingModal } ref={ this.training } style={{ color: theme.signAndNums }}>Training</h2>
+                <h2 onClick={ this.openReadMoreModal } ref={ this.readmore } style={{ color: theme.signAndNums }}>Read More</h2>
+                { modalTraining }
             </div>
         );
     }
