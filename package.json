@@ -1,6 +1,7 @@
 {
   "name": "brain-work",
   "version": "1.0.0",
+  "private": true,
   "engines": {
     "node": "10.19.0",
     "npm": "6.14.5"
