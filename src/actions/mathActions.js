@@ -2,49 +2,53 @@
 export const generateNum = (min, max) => dispatch => {
     let a = Math.round(Math.random() * (max - min) + min);
     let b = Math.round(Math.random() * (max - min) + min);
-    dispatch( {
+    dispatch({
         type: 'GENERATE_NUM',
         payload1: a,
         payload2: b,
     });
 }
-export const generateSign = (sign) => dispatch => {
-    dispatch( {
+export const generateSign = sign => dispatch => {
+    dispatch({
         type: 'GENERATE_SIGN',
         payload: sign,
     });
 }
+
 export const setMinAndMax = (min, max) => dispatch => {
-    dispatch( {
+    dispatch({
         type: 'SET_MIN_AND_MAX',
         payload1: min,
         payload2: max
     });
 }
-export const generateTimer = (time) => dispatch => {
+
+export const generateTimer = time => dispatch => {
     let tiempo = time*100;
-    dispatch( {
+    dispatch({
         type: 'GENERATE_TIMER',
         payload: tiempo,
     });
 }
-export const addInputValue = (value) => dispatch => {
+
+export const addInputValue = value => dispatch => {
     dispatch( {
         type: 'ADD_INPUT_VALUE',
         payload: value,
     });
 }
-export const changeBtnMath = (stage) => dispatch => {
+
+export const changeBtnMath = stage => dispatch => {
     let generate; 
     let next;  
 
     console.log(stage);
 
-    if ( stage === 'generate' ) {
+    if (stage === 'generate') {
         generate = false;
         next = true;
     }        
-    if ( stage === 'next' ) {  
+    if (stage === 'next') {  
         generate = true;
         next = false;
     }
@@ -54,16 +58,16 @@ export const changeBtnMath = (stage) => dispatch => {
         payload2: next,
     });
 }
-export const matchResult = (result) => dispatch => {
+export const matchResult = result => dispatch => {
     let colour;
 
-    if ( result === 'right') {
+    if (result === 'right') {
         colour = 'green';
     }        
-    if ( result === 'wrong' ) {  
+    if (result === 'wrong') {  
         colour = 'red';
     }
-    if ( result === 'initial' ) {  
+    if (result === 'initial') {  
         colour = '';        
     }
     dispatch({
@@ -71,22 +75,26 @@ export const matchResult = (result) => dispatch => {
         payload: colour,
     });
 }
+
 export const mathResultOperation = result => dispatch => {
     dispatch({
         type: 'MATH_RESULT_OPERATION',
         payload: result, 
     });
 }
+
 export const toggleModalMath = () => dispatch => {
-    dispatch ({
+    dispatch({
         type: 'TOGGLE_MODAL_MATH',
     })
 }
+
 export const clearValuesMath = () => dispatch => {
     dispatch({
         type: 'CLEAR_VALUES_MATH'
     })
 }
+
 export const trainingModeBegins = flag => dispatch => {
     dispatch({
         type: 'CHANGE_TRAINING_MODE_FLAG',
@@ -96,41 +104,43 @@ export const trainingModeBegins = flag => dispatch => {
 
 /* MemoryProgram actions */
 export const passingRandomNums = (random, mount) => dispatch => {
-    dispatch( {
+    dispatch({
         type: 'PASSING_RANDOM_NUMS',
         payload1: random,
         payload2: mount
     });
 }
+
 export const playWrongAudio = data => dispatch => {
-    dispatch( {
+    dispatch({
         type: 'PLAY_WRONG_AUDIO',
         payload: data
     })
 }
+
 export const generateTimerMemory = time => dispatch => {
-    dispatch( {
+    dispatch({
         type: 'GENERATE_TIMER_MEMORY',
         payload: time,
     });
 }
-export const changeBtn = stage => dispatch => {
-    
+
+export const changeBtn = stage => dispatch => {    
     let generate; 
     let next; 
     let check;
 
-    if ( stage === 'generate' ) {
+    if (stage === 'generate') {
         generate = false;
         check = true;
         next = false;
     }        
-    if ( stage === 'check' ) {
+    if (stage === 'check') {
         generate =false;
         check =false;
         next = true;
     }            
-    if ( stage === 'next' ) {  
+    if (stage === 'next') {  
         generate = true;
         check =false;
         next = false;
@@ -142,6 +152,7 @@ export const changeBtn = stage => dispatch => {
         payload3: next,
     });
 }
+
 export const toggleModalMemory = () => dispatch => {
     dispatch ({
         type: 'TOGGLE_MODAL_MEMORY',
