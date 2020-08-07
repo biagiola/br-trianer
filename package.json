@@ -25,8 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "keywords": [],
-  "author": "",
+  "author": "David Biagiola",
   "license": "ISC",
   "browserslist": {
     "production": [
