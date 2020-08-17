@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
-import Burger from './Burgers';
-import LeftNavbar from './LeftNavbar';
-import RightNavbar from './RightNavbar';
+import React, { Component } from 'react'
+import Burger from './Burgers'
+import LeftNavbar from './LeftNavbar'
+import RightNavbar from './RightNavbar'
 
 class Settings extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             leftSidebarVisible: false,
             rightSidebarVisible: false,
         };
-
-        this.toggleLeftSidebar = this.toggleLeftSidebar.bind(this);
-        this.toggleRightSidebar = this.toggleRightSidebar.bind(this);
-
     }
 
     // toggles the dropdown each time it is called
@@ -28,7 +23,6 @@ class Settings extends Component {
     render() { 
         return (
             <div>
-                {/*  */}
                 <Burger 
                     leftOnClick={ this.toggleLeftSidebar } 
                     rightOnClick={ this.toggleRightSidebar }
@@ -40,5 +34,5 @@ class Settings extends Component {
     }
 }
  
-export default Settings;
+export default Settings
 
