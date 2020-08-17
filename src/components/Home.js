@@ -18,10 +18,19 @@ class Home extends Component {
         const btnStyle = isLightTheme ? 'btnLight' : 'btnDark'
 
         return (
-            <div className="wrapper " style={{ background: theme.bg }}>
+            <div 
+                className="wrapper " 
+                style={{ background: theme.bg }}>
+                
                 <ThemeToggle/>
-                <div className="container" style={{ background: theme.container, boxShadow: theme.shadow }}>
-                    <h1 style={{ color: theme.fonts, background: theme.headers }}>Brain Game</h1>
+                <div 
+                    className="container" 
+                    style={{ background: theme.container, boxShadow: theme.shadow }}>
+                    
+                    <h1 
+                        style={{ color: theme.fonts, background: theme.headers }}
+                    >Brain Game</h1>
+
                     <Link to='/math' className={btnStyle}>Math</Link>
                     <Link to='/memory'  className={btnStyle}>Memory</Link>
                 </div>
