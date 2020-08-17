@@ -4,13 +4,8 @@ import { ThemeContext } from '../contexts/ThemeContext'
 import ThemeToggle from './ThemeToggle'
 
 class Home extends Component {
-    static contextType = ThemeContext;
-    constructor(props) {
-        super(props)
-        this.state = {
-            redirect: false
-        }
-    }
+
+    static contextType = ThemeContext
 
     render() { 
         const { isLightTheme, light, dark } = this.context
