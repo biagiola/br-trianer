@@ -6,14 +6,13 @@ import Form from './Form'
 import { ThemeContext } from '../../contexts/ThemeContext'
 
 class mathProgram extends Component {
-    static contextType = ThemeContext;
-    constructor(props) {
-        super(props);
-    }
+
+    static contextType = ThemeContext
 
     render() {
-        const { isLightTheme, light, dark } = this.context;
-        const theme = isLightTheme ? light : dark;
+        const { isLightTheme, light, dark } = this.context
+        const theme = isLightTheme ? light : dark
+
         return (         
             <div 
                 className="wrapper " 
@@ -32,8 +31,8 @@ class mathProgram extends Component {
                     <Form/> 
                 </div>
             </div>
-        );
+        )
     }
 }
 
-export default mathProgram;
+export default mathProgram
