@@ -6,6 +6,10 @@ import PropTypes from 'prop-types'
 import { ThemeContext } from '../contexts/ThemeContext'
 import { clearValuesMath } from '../actions/mathActions'
 
+/* 
+Class that shows the burgers and when it has a property
+when it must to slide it when we click it.
+*/
 class Burgers extends Component {
     static contextType = ThemeContext
     constructor(props){
