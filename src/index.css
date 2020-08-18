@@ -3,17 +3,18 @@
   overflow-y:hidden;  /* hide the vertical scrollbar */
   overflow-x:hidden;  /* hide the horizontal scrollbar */
 }
+
 html {
   overflow-y:hidden;  /* hide the vertical scrollbar */
 }
+
 body {
   background-color: #161616;
   color: #f1f1f1;
-  font-weight: 300;
   margin: 0;
-  justify-content: center;
   text-align: center;
 } 
+
 h1 {
   background-color: #fa8072;
   color: #000;
@@ -25,11 +26,22 @@ h1 {
   cursor:default;
   display: block;
 }
+
 h4, h2 {
-  font-weight: 50;
-  margin: 0;
+  font-weight: 50;  
+  margin: 5px 0px;
   cursor: pointer;
 }
+
+h2 {
+  margin-bottom: 15px;
+  transition: 0.3s all;
+}
+
+h2:hover {
+  color: #111;
+}
+
 a {
   text-decoration: none;
 }
@@ -173,8 +185,8 @@ input:checked + .slider:before {
   left: 0;
   right: 0;
   height: 100%;
-  /*transition: .4s all !important;*/
 }  
+
 /* Left Navbar */
 .leftSidenav {
   border: 0.1px solid black;
@@ -277,18 +289,6 @@ a, h2 { /* Preventing Line Breaks */
 
 /* Modal Stadistics*/
 /* The Modal (background) */
-.modalTraining {
-  position: absolute;
-  top: 30px;
-  left: -50px;
-  animation-name: drive;
-  animation-duration: 5s;
-  animation-fill-mode: both;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
-  animation-duration: 5s;
-  animation-timing-function: ease-out;
-}
 .modal {
   display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -307,15 +307,18 @@ a, h2 { /* Preventing Line Breaks */
 .modal-content {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
+  /*padding: 20px;*/
   border: 1px solid #888;
   width: 80%;
 }
 .close {
-  color: #aaaaaa;
+  color: #fefefe;
   float: right;
+  right: 90px;
+  position: absolute;
   font-size: 28px;
   font-weight: bold;
+  transition: 0.5s;
 }
 .close:hover,
 .close:focus {
@@ -443,62 +446,6 @@ input {
   margin-top: 5px;
 }
 
-/* The Modal (background) */
-.modal2 {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  -webkit-animation-name: fadeIn; /* Fade in the background */
-  -webkit-animation-duration: 0.4s;
-  animation-name: fadeIn;
-  animation-duration: 0.4s
-}
-/* Modal Content */
-.modal2-content {
-  position: fixed;
-  bottom: 0;
-  background-color: #161616;
-  width: 100%;
-  -webkit-animation-name: slideIn;
-  -webkit-animation-duration: 0.4s;
-  animation-name: slideIn;
-  animation-duration: 0.4s
-}
-/* The Close Button */
-.close2 {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  transition: 0.2s all;
-}
-.close2:hover,
-.close2:focus {
-  color: #161616;
-  text-decoration: none;
-  cursor: pointer;
-}
-.modal2-header {
-  padding: 2px 16px;
-  background-color: #fa8072;
-  color: #161616;
-}
-.modal2-body { 
-  padding: 2px 16px; 
-  margin: 15px !important;
-}
-.modal2-footer {
-  padding: 2px 16px;
-  background-color: #fa8072;
-  color: #1b1b1d;
-}
 /* Add Animation */
 @keyframes slideIn {
   from {bottom: -300px; opacity: 0}
