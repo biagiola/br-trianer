@@ -1,13 +1,28 @@
   
 import React, { Component } from 'react'
-import TopNavbar from './Settings'
-import Numbers from './Numbers'
-import Form from './Form'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
 import { ThemeContext } from '../../contexts/ThemeContext'
 
-class mathProgram extends Component {
+import { toggleModalMath } from '../../actions'
+
+import TopNavbar from '../sidebars'
+import Numbers from './Numbers'
+import Form from './Form'
+
+class MathProgram extends Component {
+    constructor(props) {
+        super(props)
+    }
 
     static contextType = ThemeContext
+
+    closeModal = () => {
+        if(this.props.modalDisplay) {
+            this.props.toggleModalMath()
+        }
+    }
 
     render() {
         const { isLightTheme, light, dark } = this.context
@@ -16,9 +31,10 @@ class mathProgram extends Component {
         return (         
             <div 
                 className="wrapper " 
+                onClick={ this.closeModal }
                 style={{ background: theme.bg }}>
                     
-            <TopNavbar/>    
+                <TopNavbar page="math"/>    
                 <div 
                     className="container" 
                     style={{ background: theme.container }}>
@@ -35,4 +51,18 @@ class mathProgram extends Component {
     }
 }
 
-export default mathProgram
+MathProgram.propTypes = {
+    toggleModalMath: PropTypes.func
+}; 
+
+const mapStateToProps = state => ({
+    modalDisplay: state.all.mathModal
+})
+
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleModalMath: () => dispatch(toggleModalMath()), 
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MathProgram)
