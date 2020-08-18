@@ -2,12 +2,16 @@ import React, { Component } from 'react'
 
 import Burgers from '../Burgers'
 
+// Math sidebar template
 import MathLeftNavbar from './Left/math'
 import MathRightNavbar from './Right/math'
-
+// Memory sidebar template
 import MemoryLeftNavbar from './Left/memory'
 import MemoryRightNavbar from './Right/memory'
 
+/*
+Class that display the sidebar 
+*/
 class Settings extends Component {
     constructor(props) {
         super(props)
@@ -66,8 +70,13 @@ class Settings extends Component {
         return (
             <div>
                 <Burgers 
+                    page={ this.props.page }
+
                     rightMathOnClick={ this.toggleRightMathSidebar }
                     leftMathOnClick={ this.toggleLeftMathSidebar } 
+
+                    rightMemoryOnClick={ this.toggleRightMemorySidebar }
+                    leftMemoryOnClick={ this.toggleLeftMemorySidebar } 
                 />
                 
                 { leftNavbar }
