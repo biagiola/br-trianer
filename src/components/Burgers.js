@@ -10,7 +10,6 @@ class Burgers extends Component {
     static contextType = ThemeContext
     constructor(props){
         super(props)
-        this.clearNumbers = this.clearNumbers.bind(this)
     }
 
     clearNumbers = () => {
@@ -21,16 +20,43 @@ class Burgers extends Component {
         const { isLightTheme, light, dark } = this.context
         const theme = isLightTheme ? dark : light
 
+        console.log('Burgers ',this.props.page)
+
+        // Burger left
+        const burgerLeft = this.props.page === 'math' 
+        ? <div  
+            className="burgerLeft" 
+            onClick={ this.props.leftMathOnClick } 
+            style={{ position: "", color: theme.burgersFonts }} 
+            data-toggle="collapse" 
+            data-target="#collapsingNavbar">&#9776;</div>
+        :
+        <div  
+            className="burgerLeft" 
+            onClick={ this.props.leftMemoryOnClick } 
+            style={{ position: "", color: theme.burgersFonts }}  
+            data-toggle="collapse" 
+            data-target="#collapsingNavbar">&#9776;</div>
+
+        // Burger right
+        const burgerRight = this.props.page === 'math' 
+        ? <div  
+            className="burgerRight" 
+            onClick={ this.props.rightMathOnClick } 
+            style={{ position: "", color: theme.burgersFonts }} 
+            data-toggle="collapse" 
+            data-target="#collapsingNavbar">&#9776;</div>
+        :
+        <div  
+            className="burgerRight" 
+            onClick={ this.props.rightMemoryOnClick } 
+            style={{ position: "", color: theme.burgersFonts }}  
+            data-toggle="collapse" 
+            data-target="#collapsingNavbar">&#9776;</div>
+
         return (
             <div id="burger">
-
-                {/* burger left */}
-                <div  
-                    className="burgerRight" 
-                    onClick={ this.props.rightOnClick } 
-                    style={{ position: "", color: theme.burgersFonts }}  
-                    data-toggle="collapse" 
-                    data-target="#collapsingNavbar">&#9776;</div>
+                { burgerLeft }
                 
                 <Link 
                     to={ './' } 
@@ -41,13 +67,7 @@ class Burgers extends Component {
                         style={{ color: theme.burgersFonts }}></i>
                 </Link>
                 
-                {/* burger right */}
-                <div  
-                    className="burgerLeft" 
-                    onClick={ this.props.leftOnClick } 
-                    style={{ position: "", color: theme.burgersFonts }} 
-                    data-toggle="collapse" 
-                    data-target="#collapsingNavbar">&#9776;</div>
+                { burgerRight }
             </div>
         )
     }
