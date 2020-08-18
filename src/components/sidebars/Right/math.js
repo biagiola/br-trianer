@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { generateSign, setMinAndMax, /* generateTimer */ } from '../../../actions/mathActions';
-import { ThemeContext } from '../../../contexts/ThemeContext';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { generateSign, setMinAndMax, /* generateTimer */ } from '../../../actions'
+import { ThemeContext } from '../../../contexts/ThemeContext'
 
 class RightNavbar extends Component {
-    static contextType = ThemeContext;
     constructor(props) {
         super(props);
         this.state = { 
@@ -21,13 +20,9 @@ class RightNavbar extends Component {
         this.timeId = React.createRef();
         this.modeId = React.createRef();
         this.quantityId = React.createRef();
-        // bindings
-        this.digitValues = this.digitValues.bind(this);
-        this.operationValue = this.operationValue.bind(this);
-        this.timeValue = this.timeValue.bind(this);
-        this.modeValue = this.modeValue.bind(this);
-        this.quantityValue = this.quantityValue.bind(this);
     }
+    
+    static contextType = ThemeContext
 
     digitValues = () => {
         console.log("phase");
@@ -35,19 +30,23 @@ class RightNavbar extends Component {
         let firstLastNumbers = rangeNumbers.split("-");
         this.props.setMinAndMax(parseInt(firstLastNumbers[0]), parseInt(firstLastNumbers[1])); 
     }
+
     operationValue = () => {
         this.props.generateSign(this.operationId.current.value)
     }
+
     timeValue = () => {        
         console.log(this.timeId.current.value);
         this.props.generateTimer(this.timeId.current.value);
     }
+
     modeValue = () => {
         console.log('modeId', this.modeId.current.value );
         this.setState({
             mode: this.modeId.current.value
         })
     }
+
     quantityValue = () => {
         console.log('quantityId', this.quantityId.current.value );
         this.setState({
@@ -56,26 +55,46 @@ class RightNavbar extends Component {
     }
 
     render() {
-        let scope;
+        let scope
         if (this.props.show) {
-            scope = "250px";
+            scope = "250px"
         } else {
             scope = "0px"
         }
 
-        const { isLightTheme, light, dark } = this.context;
-        const theme = isLightTheme ? light : dark;
+        const { isLightTheme, light, dark } = this.context
+        const theme = isLightTheme ? light : dark
         const btnStyle = isLightTheme ? 'btnLight' : 'btnDark'
-
+        console.log(btnStyle)
         return (
-            <div id="myRightSidenav" className="rightSidenav" style={{visibility: "visible", position: "absolute", height: "100%", width: scope, backgroundColor: theme.container }}>
+            <div 
+                id="myRightSidenav" 
+                className="rightSidenav" 
+                style={{
+                    visibility: "visible", 
+                    position: "absolute", 
+                    height: "100%", 
+                    width: scope, 
+                     }}>
             
-                <h4 id="saveBtn" className="closebtn" onClick={ this.props.close }>&times;</h4>
-                <h1 style={{ color: theme.fonts, background: theme.headers }}>Settings</h1>
-            
+                <h4 
+                    id="saveBtn" 
+                    className="closebtn" 
+                    onClick={ this.props.close }>&times;</h4>
+                <h1 
+                    style={{ 
+                        color: theme.fonts, 
+                        background: theme.headers }}>Settings</h1>
+
                 <div className="divsideItems">
+
                     <h4 style={{ color: theme.signAndNums }}>Digits</h4>
-                    <select className={ btnStyle } ref={ this.digitsId } onInput={ () => {this.digitValues()} } style={{ backgroundColor: theme.headers }} defaultValue="10-99">
+                    <select 
+                        className={ btnStyle } 
+                        ref={ this.digitsId } 
+                        onInput={ () => {this.digitValues()} } 
+                        style={{ backgroundColor: theme.headers }} 
+                        defaultValue="10-99">
                         <option value="1-9">1</option>
                         <option value="10-99">2</option>
                         <option value="100-999" >3</option>
@@ -84,7 +103,12 @@ class RightNavbar extends Component {
                     </select>
 
                     <h4 style={{ color: theme.signAndNums }}>Operation</h4>
-                    <select className={ btnStyle }  ref={ this.operationId } onChange={ this.operationValue } style={{ backgroundColor: theme.headers }} defaultValue='+' >
+                    <select 
+                        className={ btnStyle }  
+                        ref={ this.operationId } 
+                        onChange={ this.operationValue } 
+                        style={{ backgroundColor: theme.headers }} 
+                        defaultValue='+' >
                         <option value="+">add</option>
                         <option value="-">sub</option>
                         <option value="*">mult</option>
@@ -92,7 +116,11 @@ class RightNavbar extends Component {
                     </select>
 
                     <h4 style={{ color: theme.signAndNums }}>Speed</h4>
-                    <select className={ btnStyle }  ref={ this.timeId } onInput={ this.timeValue } style={{ backgroundColor: theme.headers }}>
+                    <select 
+                        className={ btnStyle }  
+                        ref={ this.timeId } 
+                        onInput={ this.timeValue } 
+                        style={{ backgroundColor: theme.headers }}>
                         <option value="">None</option>
                         <option value="1">0.1s</option>
                         <option value="2">0.2s</option>
@@ -102,14 +130,23 @@ class RightNavbar extends Component {
                     </select>
 
                     <h4 style={{ color: theme.signAndNums }}>Mode</h4>
-                    <select className={ btnStyle }  ref={ this.modeId }  onInput={ this.modeValue }  style={{ backgroundColor: theme.headers }} defaultValue="infinitum">
+                    <select 
+                        className={ btnStyle }  
+                        ref={ this.modeId }  
+                        onInput={ this.modeValue } 
+                        style={{ backgroundColor: theme.headers }} 
+                        defaultValue="infinitum">
                         <option value="infinitum" >Infinitum</option>
                         <option value="finitum">finitum</option>
                     </select>
 
                     <div id="otherOpstions">
                         <h4 style={{ color: theme.signAndNums }}>Quantity</h4>
-                        <select className={ btnStyle }  ref={ this.quantityId } onInput={ this.quantityValue } style={{ backgroundColor: theme.headers }}>
+                        <select 
+                            className={ btnStyle }  
+                            ref={ this.quantityId } 
+                            onInput={ this.quantityValue } 
+                            style={{ backgroundColor: theme.headers }}>
                             <option value="10">10</option>
                             <option value="20">20</option>
                             <option value="30">30</option>
@@ -136,4 +173,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(RightNavbar);
+export default connect(null, mapDispatchToProps)(RightNavbar)
