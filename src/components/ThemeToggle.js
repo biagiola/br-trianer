@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { ThemeContext } from '../contexts/ThemeContext';
+import React, { Component } from 'react'
+import { ThemeContext } from '../contexts/ThemeContext'
 
 class ThemeToggle extends Component {
-    static contextType = ThemeContext;
+    static contextType = ThemeContext
     render() {
-        const { toggleTheme } = this.context;
+        const { toggleTheme } = this.context
         return (
             <div>
                 <label className="switch">
@@ -17,4 +17,4 @@ class ThemeToggle extends Component {
     }
 }
 
-export default ThemeToggle;
+export default ThemeToggle
