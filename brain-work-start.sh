@@ -1,0 +1,1 @@
+cd codes/brain-work/ && code . && npm start
